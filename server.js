@@ -5,6 +5,11 @@ const cors = require("cors");
 const app = express();
 app.use(cors());
 
+// Add this route to test the server
+app.get("/", (req, res) => {
+    res.send("Server is running ✔");
+});
+
 const server = http.createServer(app);
 
 // Initialize Socket.IO
@@ -46,6 +51,8 @@ io.on("connection", (socket) => {
     });
 });
 
-server.listen(3000, () => {
-    console.log("Server running at http://localhost:3000");
+// Use Railway's port or fallback to 3000
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}`);
 });
