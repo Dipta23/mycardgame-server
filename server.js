@@ -48,8 +48,9 @@ io.on("connection", (socket) => {
 });
 
 // IMPORTANT: Railway requires ONLY process.env.PORT
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000; // 3000 is default for local testing
 
 server.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
+
